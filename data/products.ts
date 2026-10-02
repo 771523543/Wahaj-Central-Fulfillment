@@ -9,7 +9,7 @@ export const products: Product[] = [
   {
     id: "wahaj-makhmariya", name: "مخمّرية وهج", slug: "wahaj-makhmariya", category: "makhmariya",
     description: "مخمّرية ناعمة للشعر والجسم بنفحات دافئة، تمنحك عطراً قريباً يرافقك طوال اليوم.", shortDescription: "نعومة عطرية هادئة", price: 75,
-    image: "/images/products/wahaj-makhmariya.svg", images: ["/images/products/wahaj-makhmariya.svg"], available: true, featured: true, stock: 18, createdAt: "2026-01-12",
+    image: "/images/products/makhmariya-aroos.jpg", images: ["/images/products/makhmariya-aroos.jpg", "/images/products/makhmariya-qalaa-arous.jpg", "/images/products/makhmariya-bakhoor.jpg", "/images/products/makhmariya-durar.jpg", "/images/products/makhmariya-saboya.jpg", "/images/products/makhmariya-collection.jpg"], available: true, featured: true, stock: 18, createdAt: "2026-01-12",
   },
   {
     id: "wahaj-perfume", name: "عطر وهج", slug: "wahaj-perfume", category: "perfumes",
