@@ -36,7 +36,7 @@ export default function GiftSection() {
           </p>
 
           <a
-            href="#"
+            href="/gifts"
             className="btn btn-gold mt-7"
           >
             استكشف المجموعات

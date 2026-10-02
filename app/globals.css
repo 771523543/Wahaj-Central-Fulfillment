@@ -87,6 +87,10 @@ button {
   transform: translateY(-2px);
 }
 
+.field { width: 100%; border-radius: 1rem; border: 1px solid rgba(0,0,0,.1); background: var(--white); padding: .85rem 1rem; outline: none; }
+.field:focus { border-color: var(--gold); }
+.badge { position: absolute; top: -1px; right: -1px; min-width: 16px; height: 16px; border-radius: 999px; background: var(--gold); color: var(--olive); font-size: 10px; display: grid; place-items: center; }
+
 .btn-gold {
   background: var(--gold);
   color: #17170f;
