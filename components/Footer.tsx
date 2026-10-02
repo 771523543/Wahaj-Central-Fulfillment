@@ -53,13 +53,13 @@ export default function Footer() {
 
           <div className="text-sm opacity-75 grid gap-3">
 
-            <span>
-              Instagram · TikTok
-            </span>
-
-            <span>
-              خدمة العملاء قريبًا
-            </span>
+  <a href="https://wa.me/967730991040" target="_blank" rel="noreferrer">
+    واتساب: +967 730 991 040
+  </a>
+  
+  <a href="tel:+967730991040">
+    اتصل بنا
+  </a>
 
           </div>
 
