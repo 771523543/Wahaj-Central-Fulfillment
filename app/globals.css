@@ -46,9 +46,11 @@ button {
   margin-inline: auto;
 }
 
-.serif {
-  font-family: "Playfair Display", serif;
-}
+  .serif {
+    font-family: "Cairo", system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
 
 .gold {
   color: var(--gold-light);
