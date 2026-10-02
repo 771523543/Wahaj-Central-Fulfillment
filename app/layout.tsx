@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-import PWARegister from "@/components/PWARegister";
-
 export const metadata: Metadata = {
   title: "وهج | بخور ومخمريات وعطور",
 
@@ -22,9 +20,6 @@ export const metadata: Metadata = {
 
   manifest: "/manifest.webmanifest",
 
-  icons: {
-    icon: "/icon.svg"
-  },
 
   appleWebApp: {
     capable: true,
@@ -49,7 +44,6 @@ export default function RootLayout({
       <body>
         {children}
 
-        <PWARegister />
       </body>
     </html>
   );
