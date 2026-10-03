@@ -26,7 +26,7 @@ export default function Header() {
         background: "var(--olive)",
       }}
     >
-      <div className="container min-h-[72px] flex items-center justify-between gap-3">
+      <div className="container min-h-[72px] flex items-center justify-between gap-2 sm:gap-3">
 
         {/* الشعار */}
         <Link
@@ -40,56 +40,56 @@ export default function Header() {
             width={180}
             height={60}
             priority
-            className="h-12 w-auto object-contain"
+            className="h-10 sm:h-12 w-auto object-contain"
           />
         </Link>
 
         {/* القائمة الرئيسية */}
-        <nav className="hidden md:flex items-center gap-5 lg:gap-7 text-sm font-semibold text-white">
+        <nav className="hidden md:flex items-center gap-3 lg:gap-6 text-xs lg:text-sm font-semibold text-white min-w-0">
 
           <Link
             href="/"
-            className="transition-colors hover:text-[var(--gold-light)]"
+            className="whitespace-nowrap transition-colors hover:text-[var(--gold-light)]"
           >
             الرئيسية
           </Link>
 
           <Link
             href="/categories"
-            className="transition-colors hover:text-[var(--gold-light)]"
+            className="whitespace-nowrap transition-colors hover:text-[var(--gold-light)]"
           >
             الأقسام
           </Link>
 
           <Link
             href="/products"
-            className="transition-colors hover:text-[var(--gold-light)]"
+            className="whitespace-nowrap transition-colors hover:text-[var(--gold-light)]"
           >
             المنتجات
           </Link>
 
           <Link
             href="/gifts"
-            className="transition-colors hover:text-[var(--gold-light)]"
+            className="whitespace-nowrap transition-colors hover:text-[var(--gold-light)]"
           >
             المجموعات والهدايا
           </Link>
 
           <Link
             href="/contact"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-[var(--gold-light)]"
+            className="inline-flex items-center gap-1 transition-colors hover:text-[var(--gold-light)] whitespace-nowrap"
           >
-            <MessageCircle size={16} />
+            <MessageCircle size={15} />
             تواصل معنا
           </Link>
 
         </nav>
 
         {/* أدوات الهيدر */}
-        <div className="flex items-center gap-1 text-white">
+        <div className="flex items-center gap-0.5 sm:gap-1 text-white shrink-0">
 
           {/* زر تثبيت التطبيق */}
-          <div className="hidden sm:block">
+          <div className="hidden lg:block">
             <InstallAppButton />
           </div>
 
@@ -181,22 +181,22 @@ export default function Header() {
       {/* قائمة الجوال */}
       {open && (
         <nav
-          className="md:hidden border-t border-white/10 px-5 py-5"
+          className="md:hidden border-t border-white/10 px-4 sm:px-5 py-4 sm:py-5"
           style={{
             background: "var(--olive)",
           }}
         >
           <div className="grid gap-1 text-sm font-semibold text-white">
 
-            {/* تثبيت التطبيق للجوال */}
-            <div className="mb-2">
+            {/* تثبيت التطبيق */}
+            <div className="mb-2 w-full">
               <InstallAppButton />
             </div>
 
             <Link
               href="/"
               onClick={() => setOpen(false)}
-              className="rounded-xl px-4 py-3 transition hover:bg-white/5 hover:text-[var(--gold-light)]"
+              className="rounded-xl px-4 py-3 min-h-[44px] flex items-center transition hover:bg-white/5 hover:text-[var(--gold-light)]"
             >
               الرئيسية
             </Link>
@@ -204,7 +204,7 @@ export default function Header() {
             <Link
               href="/categories"
               onClick={() => setOpen(false)}
-              className="rounded-xl px-4 py-3 transition hover:bg-white/5 hover:text-[var(--gold-light)]"
+              className="rounded-xl px-4 py-3 min-h-[44px] flex items-center transition hover:bg-white/5 hover:text-[var(--gold-light)]"
             >
               الأقسام
             </Link>
@@ -212,7 +212,7 @@ export default function Header() {
             <Link
               href="/products"
               onClick={() => setOpen(false)}
-              className="rounded-xl px-4 py-3 transition hover:bg-white/5 hover:text-[var(--gold-light)]"
+              className="rounded-xl px-4 py-3 min-h-[44px] flex items-center transition hover:bg-white/5 hover:text-[var(--gold-light)]"
             >
               المنتجات
             </Link>
@@ -220,7 +220,7 @@ export default function Header() {
             <Link
               href="/gifts"
               onClick={() => setOpen(false)}
-              className="rounded-xl px-4 py-3 transition hover:bg-white/5 hover:text-[var(--gold-light)]"
+              className="rounded-xl px-4 py-3 min-h-[44px] flex items-center transition hover:bg-white/5 hover:text-[var(--gold-light)]"
             >
               المجموعات والهدايا
             </Link>
@@ -228,7 +228,7 @@ export default function Header() {
             <Link
               href="/favorites"
               onClick={() => setOpen(false)}
-              className="rounded-xl px-4 py-3 transition hover:bg-white/5 hover:text-[var(--gold-light)]"
+              className="rounded-xl px-4 py-3 min-h-[44px] flex items-center transition hover:bg-white/5 hover:text-[var(--gold-light)]"
             >
               المفضلة
             </Link>
@@ -236,7 +236,7 @@ export default function Header() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="mt-2 flex items-center justify-center gap-2 rounded-full px-4 py-3 font-bold"
+              className="mt-2 flex items-center justify-center gap-2 rounded-full px-4 py-3 min-h-[46px] font-bold"
               style={{
                 background: "var(--gold)",
                 color: "var(--olive)",
