@@ -10,7 +10,7 @@ import {
 const shopLinks = [
   { label: "الأقسام", href: "/categories" },
   { label: "المنتجات", href: "/products" },
-  { label: "الهدايا", href: "/gifts" },
+  { label: "المجموعات والهدايا", href: "/gifts" },
   { label: "المفضلة", href: "/favorites" },
 ]
 
@@ -19,6 +19,7 @@ const infoLinks = [
   { label: "الشحن والتوصيل", href: "/shipping" },
   { label: "سياسة الاسترجاع", href: "/returns" },
   { label: "سياسة الخصوصية", href: "/privacy" },
+  { label: "تواصل معنا", href: "/contact" },
 ]
 
 export default function Footer() {
@@ -36,14 +37,22 @@ export default function Footer() {
       }}
     >
       <div className="container py-14 sm:py-16">
+
+        {/* المحتوى الرئيسي */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
 
-          {/* الهوية */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="inline-block">
+          {/* هوية وهج */}
+          <div>
+            <Link
+              href="/"
+              aria-label="وهج - الصفحة الرئيسية"
+              className="inline-block"
+            >
               <div
                 className="serif text-4xl font-semibold"
-                style={{ color: "var(--gold-light)" }}
+                style={{
+                  color: "var(--gold-light)",
+                }}
               >
                 وهج
               </div>
@@ -55,28 +64,28 @@ export default function Footer() {
               لا يُنسى.
             </p>
 
-            <div className="flex flex-wrap gap-3 mt-6">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-bold transition hover:-translate-y-0.5"
-                style={{
-                  background: "var(--gold)",
-                  color: "var(--olive)",
-                }}
-              >
-                <MessageCircle size={17} />
-                تواصل معنا
-              </a>
-            </div>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold mt-6 transition hover:-translate-y-0.5"
+              style={{
+                background: "var(--gold)",
+                color: "var(--olive)",
+              }}
+            >
+              <MessageCircle size={17} />
+              تواصل معنا
+            </a>
           </div>
 
           {/* المتجر */}
           <div>
             <h3
               className="font-bold text-base mb-5"
-              style={{ color: "var(--gold-light)" }}
+              style={{
+                color: "var(--gold-light)",
+              }}
             >
               المتجر
             </h3>
@@ -98,7 +107,9 @@ export default function Footer() {
           <div>
             <h3
               className="font-bold text-base mb-5"
-              style={{ color: "var(--gold-light)" }}
+              style={{
+                color: "var(--gold-light)",
+              }}
             >
               معلومات مهمة
             </h3>
@@ -116,17 +127,20 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* التواصل */}
+          {/* تواصل معنا */}
           <div>
             <h3
               className="font-bold text-base mb-5"
-              style={{ color: "var(--gold-light)" }}
+              style={{
+                color: "var(--gold-light)",
+              }}
             >
               تواصل معنا
             </h3>
 
             <div className="grid gap-4 text-sm">
 
+              {/* واتساب */}
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -136,7 +150,8 @@ export default function Footer() {
                 <span
                   className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
                   style={{
-                    background: "rgba(185,154,88,0.14)",
+                    background:
+                      "rgba(185,154,88,0.14)",
                     color: "var(--gold-light)",
                   }}
                 >
@@ -148,6 +163,7 @@ export default function Footer() {
                 </span>
               </a>
 
+              {/* الاتصال */}
               <a
                 href="tel:+967730991040"
                 className="flex items-center gap-3 opacity-70 transition hover:opacity-100"
@@ -155,99 +171,126 @@ export default function Footer() {
                 <span
                   className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
                   style={{
-                    background: "rgba(185,154,88,0.14)",
+                    background:
+                      "rgba(185,154,88,0.14)",
                     color: "var(--gold-light)",
                   }}
                 >
                   <Phone size={17} />
                 </span>
 
-                <span>اتصل بنا</span>
+                <span>
+                  اتصل بنا
+                </span>
               </a>
 
-              <div className="flex items-center gap-3 opacity-70">
+              {/* الشحن */}
+              <Link
+                href="/shipping"
+                className="flex items-center gap-3 opacity-70 transition hover:opacity-100"
+              >
                 <span
                   className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
                   style={{
-                    background: "rgba(185,154,88,0.14)",
+                    background:
+                      "rgba(185,154,88,0.14)",
                     color: "var(--gold-light)",
                   }}
                 >
                   <Truck size={17} />
                 </span>
 
-                <span>الشحن والتوصيل</span>
-              </div>
+                <span>
+                  الشحن والتوصيل
+                </span>
+              </Link>
 
             </div>
           </div>
         </div>
 
-        {/* شريط المزايا */}
+        {/* مزايا وهج */}
         <div
-          className="grid sm:grid-cols-3 gap-4 mt-12 pt-8 border-t"
+          className="grid sm:grid-cols-3 gap-5 mt-12 pt-8 border-t"
           style={{
-            borderColor: "rgba(255,255,255,0.08)",
+            borderColor:
+              "rgba(255,255,255,0.08)",
           }}
         >
+
+          {/* الموثوقية */}
           <div className="flex items-center gap-3">
             <ShieldCheck
-              size={20}
-              style={{ color: "var(--gold-light)" }}
+              size={21}
+              style={{
+                color: "var(--gold-light)",
+              }}
             />
 
             <div>
               <p className="text-sm font-bold">
                 تجربة موثوقة
               </p>
+
               <p className="text-xs opacity-50 mt-1">
                 نهتم بتجربتك من البداية للنهاية
               </p>
             </div>
           </div>
 
+          {/* التوصيل */}
           <div className="flex items-center gap-3">
             <Truck
-              size={20}
-              style={{ color: "var(--gold-light)" }}
+              size={21}
+              style={{
+                color: "var(--gold-light)",
+              }}
             />
 
             <div>
               <p className="text-sm font-bold">
                 شحن وتوصيل
               </p>
+
               <p className="text-xs opacity-50 mt-1">
                 نعمل على إيصال طلبك بأفضل طريقة
               </p>
             </div>
           </div>
 
+          {/* خدمة العملاء */}
           <div className="flex items-center gap-3">
             <MessageCircle
-              size={20}
-              style={{ color: "var(--gold-light)" }}
+              size={21}
+              style={{
+                color: "var(--gold-light)",
+              }}
             />
 
             <div>
               <p className="text-sm font-bold">
                 خدمة العملاء
               </p>
+
               <p className="text-xs opacity-50 mt-1">
                 تواصل معنا عبر واتساب
               </p>
             </div>
           </div>
+
         </div>
       </div>
 
-      {/* الحقوق */}
+      {/* أسفل الموقع */}
       <div
         className="border-t py-5"
         style={{
-          borderColor: "rgba(255,255,255,0.08)",
+          borderColor:
+            "rgba(255,255,255,0.08)",
         }}
       >
         <div className="container flex flex-col sm:flex-row items-center justify-between gap-3 text-xs opacity-50">
+
           <p>
             © {new Date().getFullYear()} وهج — جميع الحقوق محفوظة
           </p>
@@ -259,6 +302,7 @@ export default function Footer() {
             العودة للرئيسية
             <ArrowLeft size={13} />
           </Link>
+
         </div>
       </div>
     </footer>
