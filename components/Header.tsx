@@ -11,10 +11,9 @@ export default function Header() {
 
   return (
     <header
-      className="sticky top-0 z-50 border-b border-black/5"
+      className="sticky top-0 z-50 border-b border-white/10"
       style={{
-        background: "rgba(247,242,232,.94)",
-        backdropFilter: "blur(12px)",
+        background: "#000000",
       }}
     >
       <div className="container h-[72px] flex items-center justify-between gap-5">
@@ -23,7 +22,7 @@ export default function Header() {
         <Link
           href="/"
           aria-label="وهج - الصفحة الرئيسية"
-          className="flex items-center shrink-0"
+          className="flex items-center shrink-0 bg-black px-3 py-1"
         >
           <img
             src="/images/wahaj-logo.jpg"
@@ -33,21 +32,44 @@ export default function Header() {
         </Link>
 
         {/* القائمة الرئيسية */}
-        <nav className="hidden md:flex items-center gap-7 text-sm font-semibold">
-          <Link href="/">الرئيسية</Link>
-          <Link href="/category/bakhoor">الأقسام</Link>
-          <Link href="/products">المنتجات</Link>
-          <Link href="/gifts">المجموعات والهدايا</Link>
+        <nav className="hidden md:flex items-center gap-7 text-sm font-semibold text-white">
+          <Link
+            href="/"
+            className="transition-colors hover:text-[#B99A58]"
+          >
+            الرئيسية
+          </Link>
+
+          <Link
+            href="/category/bakhoor"
+            className="transition-colors hover:text-[#B99A58]"
+          >
+            الأقسام
+          </Link>
+
+          <Link
+            href="/products"
+            className="transition-colors hover:text-[#B99A58]"
+          >
+            المنتجات
+          </Link>
+
+          <Link
+            href="/gifts"
+            className="transition-colors hover:text-[#B99A58]"
+          >
+            المجموعات والهدايا
+          </Link>
         </nav>
 
         {/* أدوات الهيدر */}
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 text-white">
 
           {/* البحث */}
           <Link
             href="/search"
             aria-label="بحث"
-            className="p-2"
+            className="p-2 transition-colors hover:text-[#B99A58]"
           >
             <Search size={20} />
           </Link>
@@ -56,12 +78,22 @@ export default function Header() {
           <Link
             href="/favorites"
             aria-label="المفضلة"
-            className="p-2 relative"
+            className="p-2 relative transition-colors hover:text-[#B99A58]"
           >
-            <Heart size={20} />
+            <Heart
+              size={20}
+              fill={favorites.length > 0 ? "#B99A58" : "none"}
+              color={favorites.length > 0 ? "#B99A58" : "currentColor"}
+            />
 
             {favorites.length > 0 && (
-              <span className="badge">
+              <span
+                className="absolute top-0 right-0 min-w-[16px] h-[16px] rounded-full flex items-center justify-center text-[10px] font-bold"
+                style={{
+                  background: "#B99A58",
+                  color: "#000",
+                }}
+              >
                 {favorites.length}
               </span>
             )}
@@ -71,12 +103,18 @@ export default function Header() {
           <Link
             href="/cart"
             aria-label="السلة"
-            className="p-2 relative"
+            className="p-2 relative transition-colors hover:text-[#B99A58]"
           >
             <ShoppingBag size={20} />
 
             {cartCount > 0 && (
-              <span className="badge">
+              <span
+                className="absolute top-0 right-0 min-w-[16px] h-[16px] rounded-full flex items-center justify-center text-[10px] font-bold"
+                style={{
+                  background: "#B99A58",
+                  color: "#000",
+                }}
+              >
                 {cartCount}
               </span>
             )}
@@ -87,7 +125,7 @@ export default function Header() {
             aria-label={open ? "إغلاق القائمة" : "فتح القائمة"}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
-            className="p-2 md:hidden"
+            className="p-2 md:hidden transition-colors hover:text-[#B99A58]"
             type="button"
           >
             {open ? <X size={22} /> : <Menu size={22} />}
@@ -97,10 +135,12 @@ export default function Header() {
 
       {/* قائمة الجوال */}
       {open && (
-        <nav className="md:hidden border-t border-black/5 px-6 py-5 grid gap-4 text-sm font-semibold">
+        <nav className="md:hidden border-t border-white/10 px-6 py-5 grid gap-4 text-sm font-semibold text-white bg-black">
+
           <Link
             onClick={() => setOpen(false)}
             href="/"
+            className="transition-colors hover:text-[#B99A58]"
           >
             الرئيسية
           </Link>
@@ -108,6 +148,7 @@ export default function Header() {
           <Link
             onClick={() => setOpen(false)}
             href="/category/bakhoor"
+            className="transition-colors hover:text-[#B99A58]"
           >
             الأقسام
           </Link>
@@ -115,6 +156,7 @@ export default function Header() {
           <Link
             onClick={() => setOpen(false)}
             href="/products"
+            className="transition-colors hover:text-[#B99A58]"
           >
             المنتجات
           </Link>
@@ -122,6 +164,7 @@ export default function Header() {
           <Link
             onClick={() => setOpen(false)}
             href="/gifts"
+            className="transition-colors hover:text-[#B99A58]"
           >
             المجموعات والهدايا
           </Link>
