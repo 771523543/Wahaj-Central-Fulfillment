@@ -38,9 +38,9 @@ export default function Header() {
             src="/images/wahaj-logo.webp"
             alt="شعار وهج"
             width={180}
-            height={48}
+            height={60}
             priority
-            className="h-12 w-auto object-contain"
+            className="h-10 w-auto object-contain"
           />
         </Link>
 
