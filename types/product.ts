@@ -4,11 +4,16 @@ export type Product = {
   slug: string
   description: string
   shortDescription: string
-  price: number
+
+  // السعر اختياري لأن بعض المنتجات لا تحتوي على سعر
+  price?: number
   oldPrice?: number
+
   category: "bakhoor" | "makhmariya" | "perfumes" | "gifts"
+
   image: string
   images: string[]
+
   available: boolean
   featured: boolean
   stock: number
@@ -22,4 +27,7 @@ export const categoryLabels: Record<Product["category"], string> = {
   gifts: "المجموعات والهدايا",
 }
 
-export type CartItem = { product: Product; quantity: number }
+export type CartItem = {
+  product: Product
+  quantity: number
+}
