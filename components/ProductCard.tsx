@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Heart } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
 import type { Product } from "@/types/product"
 import { categoryLabels } from "@/types/product"
 import { useStore } from "@/components/StoreProvider"
@@ -14,6 +15,31 @@ export default function ProductCard({
 }) {
   const { toggleFavorite, isFavorite } = useStore()
 
+  const cardRef = useRef<HTMLElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const element = cardRef.current
+
+    if (!element) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      {
+        threshold: 0.15,
+      }
+    )
+
+    observer.observe(element)
+
+    return () => observer.disconnect()
+  }, [])
+
   const whatsappUrl =
     "https://wa.me/967730991040?text=" +
     encodeURIComponent(
@@ -21,11 +47,14 @@ export default function ProductCard({
     )
 
   return (
-    <article className="card p-4 flex flex-col">
-
+    <article
+      ref={cardRef}
+      className={`card product-card p-4 flex flex-col ${
+        isVisible ? "product-card-visible" : ""
+      }`}
+    >
       {/* صورة المنتج */}
       <div className="relative">
-
         <Link
           href={`/products/${product.slug}`}
           aria-label={`عرض ${product.name}`}
@@ -39,7 +68,7 @@ export default function ProductCard({
               alt={product.name}
               width={1200}
               height={1200}
-              className="h-full w-full object-contain p-3 sm:p-4"
+              className="h-full w-full object-contain p-3 sm:p-4 transition-transform duration-500 hover:scale-105"
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 300px"
             />
           </div>
@@ -70,7 +99,6 @@ export default function ProductCard({
             }
           />
         </button>
-
       </div>
 
       {/* معلومات المنتج */}
@@ -104,7 +132,6 @@ export default function ProductCard({
       >
         اطلبها الآن
       </a>
-
     </article>
   )
 }
