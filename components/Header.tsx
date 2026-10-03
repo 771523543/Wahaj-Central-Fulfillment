@@ -12,9 +12,11 @@ import {
 } from "lucide-react"
 import { useState } from "react"
 import { useStore } from "@/components/StoreProvider"
+import InstallAppButton from "@/components/InstallAppButton"
 
 export default function Header() {
   const [open, setOpen] = useState(false)
+
   const { cartCount, favorites } = useStore()
 
   return (
@@ -24,7 +26,7 @@ export default function Header() {
         background: "var(--olive)",
       }}
     >
-      <div className="container h-[72px] flex items-center justify-between gap-4">
+      <div className="container min-h-[72px] flex items-center justify-between gap-3">
 
         {/* الشعار */}
         <Link
@@ -43,7 +45,7 @@ export default function Header() {
         </Link>
 
         {/* القائمة الرئيسية */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-7 text-sm font-semibold text-white">
+        <nav className="hidden md:flex items-center gap-5 lg:gap-7 text-sm font-semibold text-white">
 
           <Link
             href="/"
@@ -85,6 +87,11 @@ export default function Header() {
 
         {/* أدوات الهيدر */}
         <div className="flex items-center gap-1 text-white">
+
+          {/* زر تثبيت التطبيق */}
+          <div className="hidden sm:block">
+            <InstallAppButton />
+          </div>
 
           {/* البحث */}
           <Link
@@ -180,6 +187,11 @@ export default function Header() {
           }}
         >
           <div className="grid gap-1 text-sm font-semibold text-white">
+
+            {/* تثبيت التطبيق للجوال */}
+            <div className="mb-2">
+              <InstallAppButton />
+            </div>
 
             <Link
               href="/"
