@@ -55,7 +55,7 @@ export default function Categories() {
 
     const interval = setInterval(() => {
       nextSlide()
-    }, 5000)
+    }, 2500)
 
     return () => clearInterval(interval)
   }, [paused])
