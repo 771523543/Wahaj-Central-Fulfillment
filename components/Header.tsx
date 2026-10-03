@@ -27,7 +27,7 @@ export default function Header() {
       }}
     >
       {/* الشريط العلوي */}
-      <div className="container min-h-[60px] sm:min-h-[64px] flex items-center justify-between gap-2 sm:gap-3">
+      <div className="container min-h-[56px] sm:min-h-[60px] flex items-center justify-between gap-2">
 
         {/* الشعار */}
         <Link
@@ -41,7 +41,7 @@ export default function Header() {
             width={180}
             height={60}
             priority
-            className="h-10 w-auto object-contain"
+            className="h-8 sm:h-9 w-auto object-contain"
           />
         </Link>
 
@@ -100,7 +100,7 @@ export default function Header() {
             aria-label="البحث"
             className="p-2 transition-colors hover:text-[var(--gold-light)]"
           >
-            <Search size={20} />
+            <Search size={19} />
           </Link>
 
           {/* المفضلة */}
@@ -110,7 +110,7 @@ export default function Header() {
             className="relative p-2 transition-colors hover:text-[var(--gold-light)]"
           >
             <Heart
-              size={20}
+              size={19}
               fill={
                 favorites.length > 0
                   ? "var(--gold)"
@@ -125,7 +125,7 @@ export default function Header() {
 
             {favorites.length > 0 && (
               <span
-                className="absolute top-0 right-0 min-w-[16px] h-[16px] rounded-full flex items-center justify-center text-[10px] font-bold"
+                className="absolute top-0 right-0 min-w-[15px] h-[15px] rounded-full flex items-center justify-center text-[9px] font-bold"
                 style={{
                   background: "var(--gold)",
                   color: "var(--olive)",
@@ -142,11 +142,11 @@ export default function Header() {
             aria-label="السلة"
             className="relative p-2 transition-colors hover:text-[var(--gold-light)]"
           >
-            <ShoppingBag size={20} />
+            <ShoppingBag size={19} />
 
             {cartCount > 0 && (
               <span
-                className="absolute top-0 right-0 min-w-[16px] h-[16px] rounded-full flex items-center justify-center text-[10px] font-bold"
+                className="absolute top-0 right-0 min-w-[15px] h-[15px] rounded-full flex items-center justify-center text-[9px] font-bold"
                 style={{
                   background: "var(--gold)",
                   color: "var(--olive)",
@@ -170,9 +170,9 @@ export default function Header() {
             className="p-2 md:hidden transition-colors hover:text-[var(--gold-light)]"
           >
             {open ? (
-              <X size={22} />
+              <X size={21} />
             ) : (
-              <Menu size={22} />
+              <Menu size={21} />
             )}
           </button>
 
@@ -182,7 +182,7 @@ export default function Header() {
       {/* قائمة الجوال */}
       {open && (
         <nav
-          className="md:hidden border-t border-white/10 px-4 sm:px-5 py-4 sm:py-5"
+          className="md:hidden border-t border-white/10 px-4 sm:px-5 py-4"
           style={{
             background: "var(--olive)",
           }}
