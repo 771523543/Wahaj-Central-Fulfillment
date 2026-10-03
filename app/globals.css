@@ -481,3 +481,22 @@ button {
     width: min(100% - 24px, 1160px);
   }
 }
+@keyframes wahajSplashLoading {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wahaj-splash-loading {
+    animation: none !important;
+  }
+}
