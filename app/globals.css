@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap");
 
 @import "tailwindcss";
 
@@ -33,7 +33,7 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: clip;
+  overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -44,7 +44,7 @@ body {
   background: var(--ivory);
   color: var(--black);
   font-family: "Cairo", system-ui, sans-serif;
-  overflow-x: clip;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -91,7 +91,7 @@ button {
 }
 
 /* =========================================
-   الحاوية
+   الحاوية الرئيسية
    ========================================= */
 
 .container {
@@ -118,11 +118,10 @@ button {
    ========================================= */
 
 .pattern {
-  background-image:
-    radial-gradient(
-      rgba(213, 189, 130, 0.16) 1px,
-      transparent 1px
-    );
+  background-image: radial-gradient(
+    rgba(213, 189, 130, 0.16) 1px,
+    transparent 1px
+  );
 
   background-size: 18px 18px;
 }
@@ -147,11 +146,14 @@ button {
 
   transition:
     transform 0.2s ease,
-    opacity 0.2s ease;
+    opacity 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.btn:hover {
-  transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    transform: translateY(-2px);
+  }
 }
 
 .btn-gold {
@@ -187,7 +189,7 @@ button {
 }
 
 /* =========================================
-   شارات الأرقام
+   الشارات
    ========================================= */
 
 .badge {
@@ -215,6 +217,7 @@ button {
 
 .card {
   min-width: 0;
+  width: 100%;
 
   background: var(--white);
 
@@ -224,16 +227,17 @@ button {
 
   overflow: hidden;
 
-  box-shadow:
-    0 8px 30px rgba(31, 42, 32, 0.06);
+  box-shadow: 0 8px 30px rgba(31, 42, 32, 0.06);
 
   transition:
-    box-shadow 0.25s ease;
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
 }
 
-.card:hover {
-  box-shadow:
-    0 14px 35px rgba(31, 42, 32, 0.1);
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    box-shadow: 0 14px 35px rgba(31, 42, 32, 0.1);
+  }
 }
 
 /* =========================================
@@ -245,12 +249,16 @@ button {
   min-width: 0;
 }
 
+/* =========================================
+   النصوص الثانوية
+   ========================================= */
+
 .muted {
   color: #756f64;
 }
 
 /* =========================================
-   حركة صورة الهيرو
+   حركة صورة الهيرو فقط
    ========================================= */
 
 @keyframes wahajHeroZoom {
@@ -283,82 +291,36 @@ button {
    بطاقات قصتنا
    ========================================= */
 
+/*
+   مهم:
+   أوقفنا الحركة المستمرة للبطاقات.
+   البطاقة ثابتة حتى لا تظهر رعشة أو اختلاف
+   بين الأجهزة.
+*/
+
 .story-card {
-  opacity: 0;
-  transform: translateY(45px);
+  opacity: 1;
+  transform: none;
+  width: 100%;
+  min-width: 0;
 }
 
 .story-card-visible {
-  animation:
-    storyCardReveal 0.8s ease forwards,
-    storyCardFloat 4.8s ease-in-out 0.8s infinite;
+  opacity: 1;
+  transform: none;
 }
 
-.story-card-1.story-card-visible {
-  animation-delay: 0s, 0.9s;
-}
-
-.story-card-2.story-card-visible {
-  animation:
-    storyCardReveal 0.8s ease 0.15s forwards,
-    storyCardFloat2 5s ease-in-out 1.05s infinite;
-}
-
-.story-card-3.story-card-visible {
-  animation:
-    storyCardReveal 0.8s ease 0.3s forwards,
-    storyCardFloat3 4.7s ease-in-out 1.2s infinite;
-}
-
-@keyframes storyCardReveal {
-  from {
-    opacity: 0;
-    transform: translateY(45px);
+@media (hover: hover) and (pointer: fine) {
+  .story-card {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.25s ease;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .story-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 45px rgba(31, 42, 32, 0.13);
   }
-}
-
-@keyframes storyCardFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-7px);
-  }
-}
-
-@keyframes storyCardFloat2 {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes storyCardFloat3 {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
-.story-card:hover {
-  animation-play-state: paused;
-  box-shadow:
-    0 18px 45px rgba(31, 42, 32, 0.13);
 }
 
 /* =========================================
@@ -367,67 +329,32 @@ button {
 
 .product-card {
   min-width: 0;
-  opacity: 0;
-  transform: translateY(45px);
+  width: 100%;
+  opacity: 1;
+  transform: none;
 }
+
+/*
+   نحافظ على الكلاس حتى لا يتأثر الكود
+   الحالي، لكن بدون حركة مستمرة.
+*/
 
 .product-card-visible {
-  animation:
-    productCardReveal 0.8s ease forwards,
-    productCardFloat 4.8s ease-in-out 0.8s infinite;
+  opacity: 1;
+  transform: none;
 }
 
-.product-card:nth-child(2n).product-card-visible {
-  animation:
-    productCardReveal 0.8s ease forwards,
-    productCardFloatAlt 5.2s ease-in-out 0.9s infinite;
-}
-
-.product-card:nth-child(3n).product-card-visible {
-  animation:
-    productCardReveal 0.8s ease forwards,
-    productCardFloat 5.6s ease-in-out 1s infinite;
-}
-
-@keyframes productCardReveal {
-  from {
-    opacity: 0;
-    transform: translateY(45px);
+@media (hover: hover) and (pointer: fine) {
+  .product-card {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.25s ease;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 45px rgba(31, 42, 32, 0.13);
   }
-}
-
-@keyframes productCardFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-7px);
-  }
-}
-
-@keyframes productCardFloatAlt {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.product-card:hover {
-  animation-play-state: paused;
-  transform: translateY(-8px);
-  box-shadow:
-    0 18px 45px rgba(31, 42, 32, 0.13);
 }
 
 /* =========================================
@@ -435,28 +362,21 @@ button {
    ========================================= */
 
 .category-card {
-  animation:
-    wahajCategoryFloat 5s ease-in-out infinite;
+  transform: none;
+  min-width: 0;
 }
 
-.category-card:nth-child(2n) {
-  animation-duration: 5.5s;
-}
-
-@keyframes wahajCategoryFloat {
-  0%,
-  100% {
-    transform: translateY(0);
+@media (hover: hover) and (pointer: fine) {
+  .category-card {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.25s ease;
   }
 
-  50% {
-    transform: translateY(-6px);
+  .category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 45px rgba(31, 42, 32, 0.13);
   }
-}
-
-.category-card:hover {
-  animation-play-state: paused;
-  transform: translateY(-8px);
 }
 
 /* =========================================
@@ -464,28 +384,104 @@ button {
    ========================================= */
 
 .gift-card {
-  animation:
-    wahajGiftFloat 5.2s ease-in-out infinite;
+  transform: none;
+  min-width: 0;
 }
 
-.gift-card:nth-child(2n) {
-  animation-duration: 5.7s;
-}
-
-@keyframes wahajGiftFloat {
-  0%,
-  100% {
-    transform: translateY(0);
+@media (hover: hover) and (pointer: fine) {
+  .gift-card {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.25s ease;
   }
 
-  50% {
-    transform: translateY(-7px);
+  .gift-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 45px rgba(31, 42, 32, 0.13);
   }
 }
 
-.gift-card:hover {
-  animation-play-state: paused;
-  transform: translateY(-8px);
+/* =========================================
+   منع مشاكل Grid / Flex
+   ========================================= */
+
+nav,
+header,
+main,
+section,
+footer,
+div,
+article {
+  min-width: 0;
+}
+
+.grid,
+.flex {
+  min-width: 0;
+}
+
+.grid > *,
+.flex > * {
+  min-width: 0;
+}
+
+/* =========================================
+   النصوص الطويلة
+   ========================================= */
+
+/*
+   لا نستخدم anywhere على كل العناصر،
+   لأنه كان يسبب تكسيرًا غير طبيعي للكلمات العربية.
+*/
+
+h1,
+h2,
+h3,
+h4,
+p {
+  min-width: 0;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+p {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+a {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/*
+   فقط النصوص التي لا يمكن السماح لها
+   بالخروج من العنصر تحصل على break-word.
+*/
+
+button,
+span {
+  min-width: 0;
+}
+
+/* =========================================
+   الصور
+   ========================================= */
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.product-card img {
+  max-width: 100%;
 }
 
 /* =========================================
@@ -507,7 +503,7 @@ button {
 }
 
 /* =========================================
-   أجهزة Tablet الصغيرة
+   Tablet صغير / جوال كبير
    ========================================= */
 
 @media (max-width: 767px) {
@@ -516,7 +512,7 @@ button {
   }
 
   .container {
-    width: min(100% - 24px, 1160px);
+    width: calc(100% - 24px);
   }
 
   .section {
@@ -532,11 +528,16 @@ button {
     border-radius: 20px;
   }
 
-  .story-card:hover,
-  .product-card:hover,
-  .category-card:hover,
-  .gift-card:hover {
-    transform: none;
+  /*
+     لا يوجد تحريك للبطاقات باللمس.
+  */
+
+  .story-card,
+  .product-card,
+  .category-card,
+  .gift-card {
+    transform: none !important;
+    animation: none !important;
   }
 }
 
@@ -562,25 +563,49 @@ button {
     font-size: 14px;
   }
 
+  /*
+     المنتجات:
+     عمودان ثابتان ومتساويان.
+  */
+
   .product-card {
     padding: 12px;
     border-radius: 18px;
+  }
+
+  /*
+     نضمن أن محتوى البطاقة لا يخرج منها.
+  */
+
+  .product-card > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .product-card h3,
+  .product-card p {
+    max-width: 100%;
   }
 
   .product-card .card {
     border-radius: 18px;
   }
 
+  /*
+     إيقاف كل الحركات على الجوال.
+  */
+
   .story-card,
   .product-card,
   .category-card,
   .gift-card {
-    animation-duration: 0.01ms;
+    animation: none !important;
+    transform: none !important;
   }
 }
 
 /* =========================================
-   الجوالات الصغيرة جدًا
+   الجوالات الصغيرة
    320px - 359px
    ========================================= */
 
@@ -602,30 +627,25 @@ button {
   .card {
     border-radius: 16px;
   }
+
+  .product-card {
+    padding: 10px;
+    border-radius: 16px;
+  }
 }
 
 /* =========================================
-   حماية من النصوص الطويلة
+   حماية إضافية للشاشات الصغيرة جدًا
    ========================================= */
 
-h1,
-h2,
-h3,
-h4,
-p,
-a,
-button,
-span {
-  overflow-wrap: anywhere;
-}
+@media (max-width: 340px) {
+  .container {
+    width: calc(100% - 16px);
+  }
 
-nav,
-header,
-main,
-section,
-footer,
-div {
-  min-width: 0;
+  .section {
+    padding: 40px 0;
+  }
 }
 
 /* =========================================
@@ -654,8 +674,7 @@ div {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+    animation: none !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
@@ -664,14 +683,13 @@ div {
   .product-card,
   .category-card,
   .gift-card {
-    opacity: 1;
-    transform: none;
-    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
 /* =========================================
-   دعم High Contrast
+   High Contrast
    ========================================= */
 
 @media (forced-colors: active) {
