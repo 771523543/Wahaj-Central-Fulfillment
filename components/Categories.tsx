@@ -60,6 +60,8 @@ export default function Categories() {
     return () => clearInterval(interval)
   }, [paused])
 
+  const item = items[active]
+
   return (
     <section
       id="categories"
@@ -68,6 +70,7 @@ export default function Categories() {
     >
       <div className="container">
 
+        {/* عنوان القسم */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <p className="gold font-bold text-sm">
             اكتشف وهج
@@ -86,6 +89,7 @@ export default function Categories() {
           </p>
         </div>
 
+        {/* السلايدر */}
         <div
           className="relative"
           onMouseEnter={() => setPaused(true)}
@@ -94,87 +98,84 @@ export default function Categories() {
           onTouchEnd={() => setPaused(false)}
         >
 
-          <div className="relative overflow-hidden rounded-[30px]">
+          {/* البطاقة */}
+          <div
+            key={item.title}
+            className="overflow-hidden rounded-[30px] border"
+            style={{
+              background: "var(--white)",
+              borderColor: "rgba(31,42,32,0.08)",
+              boxShadow: "0 12px 40px rgba(31,42,32,0.08)",
+            }}
+          >
 
-            <div
-              key={items[active].title}
-              className="relative h-[480px] sm:h-[560px] lg:h-[620px] w-full animate-[categoryFade_0.6s_ease]"
-            >
-
+            {/* الصورة كاملة */}
+            <div className="relative w-full bg-[var(--beige)]">
               <Image
-                src={items[active].image}
-                alt={items[active].title}
-                fill
+                src={item.image}
+                alt={item.title}
+                width={1920}
+                height={1080}
                 priority={active === 0}
-                sizes="(max-width: 640px) 100vw, (max-width: 1160px) 100vw, 1160px"
-                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 1160px"
+                className="block w-full h-auto object-contain"
               />
+            </div>
 
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(31,42,32,0.92) 0%, rgba(31,42,32,0.55) 42%, rgba(31,42,32,0.08) 100%)",
-                }}
-              />
+            {/* النص خارج الصورة */}
+            <div className="px-6 py-7 sm:px-10 sm:py-9 lg:px-14 lg:py-10">
 
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full px-7 sm:px-12 lg:px-16">
-                  <div className="max-w-xl text-white">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-7">
 
-                    <span
-                      className="inline-flex items-center rounded-full px-4 py-2 text-xs font-bold mb-5"
-                      style={{
-                        background: "rgba(185,154,88,0.95)",
-                        color: "var(--olive)",
-                      }}
-                    >
-                      {items[active].tag}
-                    </span>
+                <div className="max-w-2xl">
 
-                    <h3 className="serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                      {items[active].title}
-                    </h3>
+                  <span
+                    className="inline-flex items-center rounded-full px-4 py-2 text-xs font-bold"
+                    style={{
+                      background: "var(--gold)",
+                      color: "var(--olive)",
+                    }}
+                  >
+                    {item.tag}
+                  </span>
 
-                    <p className="mt-5 text-sm sm:text-base leading-8 text-white/85 max-w-lg">
-                      {items[active].description}
-                    </p>
+                  <h3
+                    className="serif text-3xl sm:text-4xl lg:text-5xl font-bold mt-4"
+                    style={{ color: "var(--olive)" }}
+                  >
+                    {item.title}
+                  </h3>
 
-                    <Link
-                      href={items[active].href}
-                      className="btn btn-gold mt-7"
-                    >
-                      اكتشف القسم
-                      <ArrowLeft size={18} />
-                    </Link>
+                  <p className="muted text-sm sm:text-base leading-8 mt-3">
+                    {item.description}
+                  </p>
 
-                  </div>
                 </div>
+
+                <div className="shrink-0">
+                  <Link
+                    href={item.href}
+                    className="btn btn-gold"
+                  >
+                    اكتشف القسم
+                    <ArrowLeft size={18} />
+                  </Link>
+                </div>
+
               </div>
 
             </div>
 
-            <div className="absolute bottom-6 left-6 sm:left-10 flex items-center gap-2 text-white">
-              <span className="text-lg font-bold">
-                {String(active + 1).padStart(2, "0")}
-              </span>
-
-              <span className="w-8 h-px bg-white/40" />
-
-              <span className="text-sm text-white/60">
-                {String(items.length).padStart(2, "0")}
-              </span>
-            </div>
-
           </div>
 
-          <div className="absolute bottom-6 right-6 sm:right-10 flex gap-2">
+          {/* أزرار التنقل */}
+          <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-6 flex gap-2">
 
             <button
               type="button"
               onClick={previousSlide}
               aria-label="القسم السابق"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-black/20 text-white backdrop-blur-sm transition hover:bg-white hover:text-[var(--olive)]"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-black/30 text-white backdrop-blur-sm transition hover:bg-white hover:text-[var(--olive)]"
             >
               <ArrowRight size={19} />
             </button>
@@ -183,15 +184,28 @@ export default function Categories() {
               type="button"
               onClick={nextSlide}
               aria-label="القسم التالي"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-black/20 text-white backdrop-blur-sm transition hover:bg-white hover:text-[var(--olive)]"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-black/30 text-white backdrop-blur-sm transition hover:bg-white hover:text-[var(--olive)]"
             >
               <ArrowLeft size={19} />
             </button>
 
           </div>
 
+          {/* رقم الشريحة */}
+          <div
+            className="absolute top-5 right-5 rounded-full px-4 py-2 text-sm font-bold"
+            style={{
+              background: "rgba(255,255,255,0.9)",
+              color: "var(--olive)",
+            }}
+          >
+            {String(active + 1).padStart(2, "0")} /{" "}
+            {String(items.length).padStart(2, "0")}
+          </div>
+
         </div>
 
+        {/* مؤشرات */}
         <div className="flex justify-center gap-2 mt-6">
           {items.map((item, index) => (
             <button
