@@ -26,7 +26,8 @@ export default function Header() {
         background: "var(--olive)",
       }}
     >
-      <div className="container min-h-[72px] flex items-center justify-between gap-2 sm:gap-3">
+      {/* الشريط العلوي */}
+      <div className="container min-h-[60px] sm:min-h-[64px] flex items-center justify-between gap-2 sm:gap-3">
 
         {/* الشعار */}
         <Link
@@ -77,7 +78,7 @@ export default function Header() {
 
           <Link
             href="/contact"
-            className="inline-flex items-center gap-1 transition-colors hover:text-[var(--gold-light)] whitespace-nowrap"
+            className="inline-flex items-center gap-1 whitespace-nowrap transition-colors hover:text-[var(--gold-light)]"
           >
             <MessageCircle size={15} />
             تواصل معنا
@@ -88,7 +89,7 @@ export default function Header() {
         {/* أدوات الهيدر */}
         <div className="flex items-center gap-0.5 sm:gap-1 text-white shrink-0">
 
-          {/* زر تثبيت التطبيق */}
+          {/* تثبيت التطبيق */}
           <div className="hidden lg:block">
             <InstallAppButton />
           </div>
@@ -156,7 +157,7 @@ export default function Header() {
             )}
           </Link>
 
-          {/* زر القائمة للجوال */}
+          {/* قائمة الجوال */}
           <button
             type="button"
             aria-label={
