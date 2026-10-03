@@ -1,15 +1,45 @@
-"use client";
+"use client"
 
-import { useEffect } from "react";
+import { useEffect } from "react"
 
 export default function PWARegister() {
   useEffect(() => {
-    if ("serviceWorker" in navigator) {
+    if (!("serviceWorker" in navigator)) return
+
+    const registerServiceWorker = () => {
       navigator.serviceWorker
         .register("/sw.js")
-        .catch(() => {});
+        .then((registration) => {
+          console.log(
+            "وهج PWA Service Worker:",
+            registration.scope
+          )
+        })
+        .catch((error) => {
+          console.error(
+            "خطأ في تسجيل PWA Service Worker:",
+            error
+          )
+        })
     }
-  }, []);
 
-  return null;
+    if (document.readyState === "complete") {
+      registerServiceWorker()
+    } else {
+      window.addEventListener(
+        "load",
+        registerServiceWorker,
+        { once: true }
+      )
+    }
+
+    return () => {
+      window.removeEventListener(
+        "load",
+        registerServiceWorker
+      )
+    }
+  }, [])
+
+  return null
 }
