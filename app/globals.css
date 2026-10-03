@@ -329,3 +329,78 @@ button {
     animation: none;
   }
 }
+/* =========================================
+   حركة بطاقات المنتجات
+   ========================================= */
+
+.product-card {
+  opacity: 0;
+  transform: translateY(45px);
+}
+
+/* البطاقة تظهر عند دخولها الشاشة */
+.product-card-visible {
+  animation:
+    productCardReveal 0.8s ease forwards,
+    productCardFloat 4.8s ease-in-out 0.8s infinite;
+}
+
+/* دخول البطاقة */
+@keyframes productCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(45px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* الحركة العائمة */
+@keyframes productCardFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+/* اختلاف بسيط بين البطاقات */
+.product-card:nth-child(2n) {
+  animation-name: productCardReveal, productCardFloatAlt;
+}
+
+.product-card:nth-child(3n) {
+  animation-duration: 0.8s, 5.5s;
+}
+
+@keyframes productCardFloatAlt {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* عند تمرير الماوس */
+.product-card:hover {
+  animation-play-state: paused;
+  transform: translateY(-8px);
+}
+
+/* تقليل الحركة لمن يفضل ذلك */
+@media (prefers-reduced-motion: reduce) {
+  .product-card {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
