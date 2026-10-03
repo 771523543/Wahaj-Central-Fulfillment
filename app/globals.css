@@ -25,19 +25,39 @@
    الأساسيات
    ========================================= */
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
+  min-width: 320px;
   background: var(--ivory);
   color: var(--black);
   font-family: "Cairo", system-ui, sans-serif;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
 }
 
 a {
@@ -45,8 +65,29 @@ a {
   text-decoration: none;
 }
 
-button {
+button,
+input,
+textarea,
+select {
   font-family: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* =========================================
+   التركيز وإمكانية الوصول
+   ========================================= */
+
+:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
 }
 
 /* =========================================
@@ -56,6 +97,7 @@ button {
 .container {
   width: min(1160px, calc(100% - 32px));
   margin-inline: auto;
+  min-width: 0;
 }
 
 /* =========================================
@@ -95,6 +137,8 @@ button {
   justify-content: center;
   gap: 8px;
 
+  min-height: 44px;
+
   border-radius: 999px;
 
   padding: 13px 24px;
@@ -126,10 +170,15 @@ button {
 
 .field {
   width: 100%;
+  min-width: 0;
+
   border-radius: 1rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
+
   background: var(--white);
+
   padding: 0.85rem 1rem;
+
   outline: none;
 }
 
@@ -165,6 +214,8 @@ button {
    ========================================= */
 
 .card {
+  min-width: 0;
+
   background: var(--white);
 
   border: 1px solid rgba(31, 42, 32, 0.08);
@@ -191,6 +242,7 @@ button {
 
 .section {
   padding: 72px 0;
+  min-width: 0;
 }
 
 .muted {
@@ -229,7 +281,6 @@ button {
 
 /* =========================================
    بطاقات قصتنا
-   تظهر عند دخول القسم ثم تطفو تلقائيًا
    ========================================= */
 
 .story-card {
@@ -237,33 +288,28 @@ button {
   transform: translateY(45px);
 }
 
-/* تبدأ الحركة بعد ظهور القسم */
 .story-card-visible {
   animation:
     storyCardReveal 0.8s ease forwards,
     storyCardFloat 4.8s ease-in-out 0.8s infinite;
 }
 
-/* البطاقة الأولى */
 .story-card-1.story-card-visible {
   animation-delay: 0s, 0.9s;
 }
 
-/* البطاقة الثانية */
 .story-card-2.story-card-visible {
   animation:
     storyCardReveal 0.8s ease 0.15s forwards,
     storyCardFloat2 5s ease-in-out 1.05s infinite;
 }
 
-/* البطاقة الثالثة */
 .story-card-3.story-card-visible {
   animation:
     storyCardReveal 0.8s ease 0.3s forwards,
     storyCardFloat3 4.7s ease-in-out 1.2s infinite;
 }
 
-/* ظهور البطاقة */
 @keyframes storyCardReveal {
   from {
     opacity: 0;
@@ -276,7 +322,6 @@ button {
   }
 }
 
-/* الحركة العائمة الأولى */
 @keyframes storyCardFloat {
   0%,
   100% {
@@ -288,7 +333,6 @@ button {
   }
 }
 
-/* الحركة العائمة الثانية */
 @keyframes storyCardFloat2 {
   0%,
   100% {
@@ -300,7 +344,6 @@ button {
   }
 }
 
-/* الحركة العائمة الثالثة */
 @keyframes storyCardFloat3 {
   0%,
   100% {
@@ -312,7 +355,6 @@ button {
   }
 }
 
-/* عند المرور */
 .story-card:hover {
   animation-play-state: paused;
   box-shadow:
@@ -321,36 +363,32 @@ button {
 
 /* =========================================
    بطاقات المنتجات
-   تظهر عند دخولها الشاشة ثم تطفو
    ========================================= */
 
 .product-card {
+  min-width: 0;
   opacity: 0;
   transform: translateY(45px);
 }
 
-/* ظهور المنتج */
 .product-card-visible {
   animation:
     productCardReveal 0.8s ease forwards,
     productCardFloat 4.8s ease-in-out 0.8s infinite;
 }
 
-/* اختلاف البطاقة الثانية */
 .product-card:nth-child(2n).product-card-visible {
   animation:
     productCardReveal 0.8s ease forwards,
     productCardFloatAlt 5.2s ease-in-out 0.9s infinite;
 }
 
-/* اختلاف البطاقة الثالثة */
 .product-card:nth-child(3n).product-card-visible {
   animation:
     productCardReveal 0.8s ease forwards,
     productCardFloat 5.6s ease-in-out 1s infinite;
 }
 
-/* ظهور المنتج */
 @keyframes productCardReveal {
   from {
     opacity: 0;
@@ -363,7 +401,6 @@ button {
   }
 }
 
-/* الحركة الأولى */
 @keyframes productCardFloat {
   0%,
   100% {
@@ -375,7 +412,6 @@ button {
   }
 }
 
-/* الحركة الثانية */
 @keyframes productCardFloatAlt {
   0%,
   100% {
@@ -387,7 +423,6 @@ button {
   }
 }
 
-/* عند المرور */
 .product-card:hover {
   animation-play-state: paused;
   transform: translateY(-8px);
@@ -454,17 +489,54 @@ button {
 }
 
 /* =========================================
-   تقليل الحركة
+   أجهزة Tablet
    ========================================= */
 
-@media (prefers-reduced-motion: reduce) {
-  .story-card,
-  .product-card,
-  .category-card,
-  .gift-card {
-    opacity: 1;
+@media (max-width: 1023px) {
+  .container {
+    width: min(100% - 28px, 1160px);
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+
+  .btn {
+    padding: 12px 21px;
+  }
+}
+
+/* =========================================
+   أجهزة Tablet الصغيرة
+   ========================================= */
+
+@media (max-width: 767px) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .container {
+    width: min(100% - 24px, 1160px);
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .btn {
+    min-height: 44px;
+    padding: 11px 19px;
+  }
+
+  .card {
+    border-radius: 20px;
+  }
+
+  .story-card:hover,
+  .product-card:hover,
+  .category-card:hover,
+  .gift-card:hover {
     transform: none;
-    animation: none;
   }
 }
 
@@ -473,30 +545,138 @@ button {
    ========================================= */
 
 @media (max-width: 640px) {
+  .container {
+    width: calc(100% - 24px);
+  }
+
   .section {
     padding: 52px 0;
   }
 
+  .pattern {
+    background-size: 16px 16px;
+  }
+
+  .btn {
+    padding: 11px 17px;
+    font-size: 14px;
+  }
+
+  .product-card {
+    padding: 12px;
+    border-radius: 18px;
+  }
+
+  .product-card .card {
+    border-radius: 18px;
+  }
+
+  .story-card,
+  .product-card,
+  .category-card,
+  .gift-card {
+    animation-duration: 0.01ms;
+  }
+}
+
+/* =========================================
+   الجوالات الصغيرة جدًا
+   320px - 359px
+   ========================================= */
+
+@media (max-width: 359px) {
   .container {
-    width: min(100% - 24px, 1160px);
-  }
-}
-@keyframes wahajSplashLoading {
-  0% {
-    transform: translateX(-100%);
+    width: calc(100% - 20px);
   }
 
-  50% {
-    transform: translateX(100%);
+  .section {
+    padding: 44px 0;
   }
 
-  100% {
-    transform: translateX(220%);
+  .btn {
+    min-height: 42px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .card {
+    border-radius: 16px;
   }
 }
+
+/* =========================================
+   حماية من النصوص الطويلة
+   ========================================= */
+
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+button,
+span {
+  overflow-wrap: anywhere;
+}
+
+nav,
+header,
+main,
+section,
+footer,
+div {
+  min-width: 0;
+}
+
+/* =========================================
+   دعم الأجهزة التي تحتوي على Notch
+   ========================================= */
+
+@supports (padding: env(safe-area-inset-top)) {
+  header {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  footer {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* =========================================
+   تقليل الحركة
+   ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .wahaj-splash-loading {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .story-card,
+  .product-card,
+  .category-card,
+  .gift-card {
+    opacity: 1;
+    transform: none;
     animation: none !important;
+  }
+}
+
+/* =========================================
+   دعم High Contrast
+   ========================================= */
+
+@media (forced-colors: active) {
+  button,
+  a {
+    forced-color-adjust: auto;
   }
 }
