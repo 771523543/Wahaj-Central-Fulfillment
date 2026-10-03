@@ -21,7 +21,10 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: "وهج | عطور وبخور",
-    description: "اكتشف اختيارات وهج العطرية",
+
+    description:
+      "اكتشف عالم وهج — عطور وبخور ومخمريات وهدايا بلمسة عربية أصيلة، صُممت لتترك أثرًا لا يُنسى.",
+
     url: "/",
     siteName: "وهج",
     locale: "ar_SA",
@@ -37,8 +40,11 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
+
     title: "وهج | عطور وبخور",
-    description: "اكتشف اختيارات وهج العطرية",
+
+    description:
+      "اكتشف عالم وهج — عطور وبخور ومخمريات وهدايا بلمسة عربية أصيلة، صُممت لتترك أثرًا لا يُنسى.",
 
     images: ["/images/wahaj-og-image.webp"],
   },
