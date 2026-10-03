@@ -162,3 +162,94 @@ button {
     transform: scale(1);
   }
 }
+/* =========================================
+   حركة بطاقات قصتنا
+   ========================================= */
+
+.story-card {
+  opacity: 0;
+  transform: translateY(45px);
+}
+
+/* تبدأ الحركة عندما يصبح القسم قريبًا من الظهور */
+@keyframes storyCardReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(45px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* الحركة المستمرة */
+@keyframes storyCardFloat1 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes storyCardFloat2 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes storyCardFloat3 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* ظهور البطاقات */
+.story-card {
+  animation:
+    storyCardReveal 0.8s ease forwards,
+    storyCardFloat1 4.5s ease-in-out 0.9s infinite;
+}
+
+.story-card-2 {
+  animation:
+    storyCardReveal 0.8s ease 0.15s forwards,
+    storyCardFloat2 5s ease-in-out 1.05s infinite;
+}
+
+.story-card-3 {
+  animation:
+    storyCardReveal 0.8s ease 0.3s forwards,
+    storyCardFloat3 4.7s ease-in-out 1.2s infinite;
+}
+
+/* حركة أجمل عند المرور */
+.story-card:hover {
+  box-shadow:
+    0 18px 45px rgba(31, 42, 32, 0.13);
+}
+
+/* احترام إعداد تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  .story-card,
+  .story-card-2,
+  .story-card-3 {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
