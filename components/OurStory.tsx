@@ -1,6 +1,7 @@
 "use client"
 
 import { Eye, Heart, Sparkles } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
 
 const items = [
   {
@@ -27,8 +28,34 @@ const items = [
 ]
 
 export default function OurStory() {
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const section = sectionRef.current
+
+    if (!section) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      {
+        threshold: 0.15,
+      }
+    )
+
+    observer.observe(section)
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section
+      ref={sectionRef}
       id="our-story"
       className="section overflow-hidden"
       style={{ background: "var(--beige)" }}
@@ -62,7 +89,9 @@ export default function OurStory() {
             return (
               <article
                 key={item.label}
-                className={`card story-card ${item.animation} p-7 text-center`}
+                className={`card story-card ${item.animation} ${
+                  isVisible ? "story-card-visible" : ""
+                } p-7 text-center`}
               >
                 <div
                   className="mx-auto w-14 h-14 rounded-full flex items-center justify-center"
