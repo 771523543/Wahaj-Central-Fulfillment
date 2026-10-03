@@ -18,7 +18,7 @@ export default function Hero() {
           width={1920}
           height={1080}
           priority
-          className="w-full h-auto object-cover animate-[wahajHeroZoom_8s_ease-in-out_infinite_alternate]"
+          className="w-full h-auto object-cover animate-[wahajHeroZoom_5s_ease-in-out_infinite_alternate]"
         />
       </div>
 
