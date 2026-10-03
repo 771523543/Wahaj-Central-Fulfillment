@@ -62,10 +62,11 @@ export default function AppSplash() {
           }}
         >
           <div
-            className="h-full w-1/2 rounded-full"
+            className="wahaj-splash-loading h-full w-1/2 rounded-full"
             style={{
               background: "var(--gold)",
-              animation: "wahajSplashLoading 1.1s ease-in-out infinite",
+              animation:
+                "wahajSplashLoading 1.1s ease-in-out infinite",
             }}
           />
         </div>
