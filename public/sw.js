@@ -1,4 +1,4 @@
-const CACHE_NAME = "wahaj-pwa-v3"
+const CACHE_NAME = "wahaj-pwa-v4"
 
 const APP_SHELL = [
   "/",
@@ -12,21 +12,26 @@ self.addEventListener("install", (event) => {
     })
   )
 
+  // تفعيل النسخة الجديدة مباشرة
   self.skipWaiting()
 })
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys
-          .filter((key) => key !== CACHE_NAME)
-          .map((key) => caches.delete(key))
-      )
-    )
-  )
+    Promise.all([
+      // حذف الكاش الخاص بالإصدارات القديمة
+      caches.keys().then((keys) =>
+        Promise.all(
+          keys
+            .filter((key) => key !== CACHE_NAME)
+            .map((key) => caches.delete(key))
+        )
+      ),
 
-  self.clients.claim()
+      // جعل الـ Service Worker الجديد مسيطراً مباشرة
+      self.clients.claim(),
+    ])
+  )
 })
 
 self.addEventListener("fetch", (event) => {
