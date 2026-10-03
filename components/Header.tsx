@@ -18,7 +18,7 @@ export default function Header() {
     >
       <div className="container h-[72px] flex items-center justify-between gap-5">
 
-        {/* شعار وهج */}
+        {/* اللوجو */}
         <Link
           href="/"
           aria-label="وهج - الصفحة الرئيسية"
@@ -28,7 +28,7 @@ export default function Header() {
           }}
         >
           <img
-            src="/images/wahaj-logo.jpg"
+            src="/images/wahaj-logo.webp"
             alt="شعار وهج"
             className="h-12 w-auto object-contain"
           />
@@ -123,7 +123,7 @@ export default function Header() {
             )}
           </Link>
 
-          {/* قائمة الجوال */}
+          {/* زر القائمة في الجوال */}
           <button
             aria-label={open ? "إغلاق القائمة" : "فتح القائمة"}
             aria-expanded={open}
@@ -133,12 +133,14 @@ export default function Header() {
           >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
+
         </div>
       </div>
 
       {/* قائمة الجوال */}
       {open && (
         <nav className="md:hidden border-t border-white/10 px-6 py-5 grid gap-4 text-sm font-semibold text-white">
+
           <Link
             onClick={() => setOpen(false)}
             href="/"
@@ -170,6 +172,7 @@ export default function Header() {
           >
             المجموعات والهدايا
           </Link>
+
         </nav>
       )}
     </header>
