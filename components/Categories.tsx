@@ -10,28 +10,28 @@ const items = [
     title: "البخور",
     description: "روائح دافئة وفاخرة تضفي على المكان حضورًا لا يُنسى.",
     tag: "بخور فاخر",
-    image: "/images/categories/bakhoor.webp",
+    image: "/images/bakhoor.webp",
     href: "/category/bakhoor",
   },
   {
     title: "المخمريات",
     description: "نعومة عطرية راقية بلمسة عربية أنيقة تدوم معك.",
     tag: "مخمريات",
-    image: "/images/categories/makhmariya.webp",
+    image: "/images/makhmariya.webp",
     href: "/category/makhmariya",
   },
   {
     title: "العطور",
     description: "توقيعك الخاص في كل حضور، بروائح مختارة بذوق وهج.",
     tag: "عطور فاخرة",
-    image: "/images/categories/perfumes.webp",
+    image: "/images/perfumes.webp",
     href: "/category/perfumes",
   },
   {
     title: "المجموعات والهدايا",
     description: "اختيارات فاخرة وجاهزة لتقديمها في مناسباتك الخاصة.",
     tag: "هدايا مميزة",
-    image: "/images/categories/gifts.webp",
+    image: "/images/gifts.webp",
     href: "/category/gifts",
   },
 ]
@@ -68,7 +68,6 @@ export default function Categories() {
     >
       <div className="container">
 
-        {/* عنوان القسم */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <p className="gold font-bold text-sm">
             اكتشف وهج
@@ -87,7 +86,6 @@ export default function Categories() {
           </p>
         </div>
 
-        {/* Slider */}
         <div
           className="relative"
           onMouseEnter={() => setPaused(true)}
@@ -96,7 +94,6 @@ export default function Categories() {
           onTouchEnd={() => setPaused(false)}
         >
 
-          {/* الصورة */}
           <div className="relative overflow-hidden rounded-[30px]">
 
             <div
@@ -113,7 +110,6 @@ export default function Categories() {
                 className="object-cover"
               />
 
-              {/* تدرج فوق الصورة */}
               <div
                 className="absolute inset-0"
                 style={{
@@ -122,7 +118,6 @@ export default function Categories() {
                 }}
               />
 
-              {/* المحتوى */}
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full px-7 sm:px-12 lg:px-16">
                   <div className="max-w-xl text-white">
@@ -159,7 +154,6 @@ export default function Categories() {
 
             </div>
 
-            {/* رقم الشريحة */}
             <div className="absolute bottom-6 left-6 sm:left-10 flex items-center gap-2 text-white">
               <span className="text-lg font-bold">
                 {String(active + 1).padStart(2, "0")}
@@ -174,7 +168,6 @@ export default function Categories() {
 
           </div>
 
-          {/* أزرار التنقل */}
           <div className="absolute bottom-6 right-6 sm:right-10 flex gap-2">
 
             <button
@@ -199,7 +192,6 @@ export default function Categories() {
 
         </div>
 
-        {/* مؤشرات الأقسام */}
         <div className="flex justify-center gap-2 mt-6">
           {items.map((item, index) => (
             <button
