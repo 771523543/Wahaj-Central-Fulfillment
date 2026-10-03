@@ -253,3 +253,79 @@ button {
     animation: none;
   }
 }
+/* =========================================
+   الحركة العامة لبطاقات وهج
+   ========================================= */
+
+@keyframes wahajCardFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes wahajCardFloatAlt {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* بطاقات المنتجات */
+.product-card {
+  animation: wahajCardFloat 4.8s ease-in-out infinite;
+}
+
+.product-card:nth-child(2n) {
+  animation-name: wahajCardFloatAlt;
+  animation-duration: 5.2s;
+}
+
+.product-card:nth-child(3n) {
+  animation-duration: 5.6s;
+}
+
+/* بطاقات الأقسام */
+.category-card {
+  animation: wahajCardFloat 5s ease-in-out infinite;
+}
+
+.category-card:nth-child(2n) {
+  animation-name: wahajCardFloatAlt;
+  animation-duration: 5.5s;
+}
+
+/* بطاقات الهدايا */
+.gift-card {
+  animation: wahajCardFloat 5.2s ease-in-out infinite;
+}
+
+.gift-card:nth-child(2n) {
+  animation-name: wahajCardFloatAlt;
+  animation-duration: 5.7s;
+}
+
+/* إيقاف الحركة أثناء التفاعل */
+.product-card:hover,
+.category-card:hover,
+.gift-card:hover {
+  animation-play-state: paused;
+  transform: translateY(-8px);
+}
+
+/* الأجهزة التي تطلب تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  .product-card,
+  .category-card,
+  .gift-card {
+    animation: none;
+  }
+}
