@@ -13,7 +13,7 @@ export default function Header() {
     <header
       className="sticky top-0 z-50 border-b border-white/10"
       style={{
-        background: "#000000",
+        background: "var(--olive)",
       }}
     >
       <div className="container h-[72px] flex items-center justify-between gap-5">
@@ -22,7 +22,10 @@ export default function Header() {
         <Link
           href="/"
           aria-label="وهج - الصفحة الرئيسية"
-          className="flex items-center shrink-0 bg-black px-3 py-1"
+          className="flex items-center shrink-0 px-3 py-1 rounded-lg"
+          style={{
+            background: "var(--olive)",
+          }}
         >
           <img
             src="/images/wahaj-logo.jpg"
@@ -91,7 +94,7 @@ export default function Header() {
                 className="absolute top-0 right-0 min-w-[16px] h-[16px] rounded-full flex items-center justify-center text-[10px] font-bold"
                 style={{
                   background: "#B99A58",
-                  color: "#000",
+                  color: "#1f2a20",
                 }}
               >
                 {favorites.length}
@@ -112,7 +115,7 @@ export default function Header() {
                 className="absolute top-0 right-0 min-w-[16px] h-[16px] rounded-full flex items-center justify-center text-[10px] font-bold"
                 style={{
                   background: "#B99A58",
-                  color: "#000",
+                  color: "#1f2a20",
                 }}
               >
                 {cartCount}
@@ -135,8 +138,7 @@ export default function Header() {
 
       {/* قائمة الجوال */}
       {open && (
-        <nav className="md:hidden border-t border-white/10 px-6 py-5 grid gap-4 text-sm font-semibold text-white bg-black">
-
+        <nav className="md:hidden border-t border-white/10 px-6 py-5 grid gap-4 text-sm font-semibold text-white">
           <Link
             onClick={() => setOpen(false)}
             href="/"
