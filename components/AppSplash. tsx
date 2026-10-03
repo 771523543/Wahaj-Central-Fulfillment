@@ -1,0 +1,75 @@
+"use client"
+
+import Image from "next/image"
+import { useEffect, useState } from "react"
+
+export default function AppSplash() {
+  const [visible, setVisible] = useState(true)
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setVisible(false)
+    }, 1400)
+
+    return () => window.clearTimeout(timer)
+  }, [])
+
+  if (!visible) return null
+
+  return (
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center"
+      style={{
+        background: "var(--olive)",
+      }}
+    >
+      <div className="flex flex-col items-center">
+        <div
+          className="flex items-center justify-center rounded-[28px] p-5"
+          style={{
+            background: "rgba(255,255,255,0.08)",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.18)",
+          }}
+        >
+          <Image
+            src="/images/wahaj-logo.webp"
+            alt="وهج"
+            width={180}
+            height={180}
+            priority
+            className="h-28 w-28 object-contain"
+          />
+        </div>
+
+        <p
+          className="mt-6 text-sm tracking-[0.25em]"
+          style={{ color: "var(--gold-light)" }}
+        >
+          وهج
+        </p>
+
+        <p
+          className="mt-2 text-xs"
+          style={{ color: "rgba(255,255,255,0.65)" }}
+        >
+          عطرٌ يترك أثرًا
+        </p>
+
+        <div
+          className="mt-7 h-1 w-16 overflow-hidden rounded-full"
+          style={{
+            background: "rgba(255,255,255,0.12)",
+          }}
+        >
+          <div
+            className="h-full w-1/2 rounded-full"
+            style={{
+              background: "var(--gold)",
+              animation: "wahajSplashLoading 1.1s ease-in-out infinite",
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
