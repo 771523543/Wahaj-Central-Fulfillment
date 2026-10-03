@@ -18,6 +18,54 @@ export const products: Product[] = [
   },
 
   {
+    id: "wahaj-bakhoor-01",
+    name: "بخور وهج 01",
+    slug: "wahaj-bakhoor-01",
+    category: "bakhoor",
+    description:
+      "بخور فاخر برائحة دافئة وأنيقة، مناسب للمجالس والمناسبات ويمنح المكان حضورًا عطريًا مميزًا.",
+    shortDescription: "رائحة دافئة وفاخرة",
+    image: "/images/bakhoor-01.webp",
+    images: ["/images/bakhoor-01.webp"],
+    available: true,
+    featured: true,
+    stock: 10,
+    createdAt: "2026-10-03",
+  },
+
+  {
+    id: "wahaj-bakhoor-02",
+    name: "بخور وهج 02",
+    slug: "wahaj-bakhoor-02",
+    category: "bakhoor",
+    description:
+      "اختيار عطري أنيق لمحبي البخور العربي، برائحة متوازنة تناسب الاستخدام اليومي والمناسبات.",
+    shortDescription: "رائحة عربية أنيقة",
+    image: "/images/bakhoor-02.webp",
+    images: ["/images/bakhoor-02.webp"],
+    available: true,
+    featured: true,
+    stock: 10,
+    createdAt: "2026-10-03",
+  },
+
+  {
+    id: "wahaj-bakhoor-03",
+    name: "بخور وهج 03",
+    slug: "wahaj-bakhoor-03",
+    category: "bakhoor",
+    description:
+      "رائحة فاخرة تضيف للمكان أجواءً هادئة ودافئة، بلمسة عطرية تناسب الذوق العربي المعاصر.",
+    shortDescription: "رائحة فاخرة وهادئة",
+    image: "/images/bakhoor-03.webp",
+    images: ["/images/bakhoor-03.webp"],
+    available: true,
+    featured: true,
+    stock: 10,
+    createdAt: "2026-10-03",
+  },
+
+  {
     id: "wahaj-makhmariya-01",
     name: "مخمّرية وهج",
     slug: "wahaj-makhmariya-01",
